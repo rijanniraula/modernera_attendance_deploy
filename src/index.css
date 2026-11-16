@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+/*
+ * Clean workspace theme: white surfaces on a soft grey canvas, vivid blue primary,
+ * pink highlight for "today", pastel status pills. Geist for UI, DM Serif Display for the wordmark only.
+ */
+
+@theme inline {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-brand: "DM Serif Display", ui-serif, Georgia, serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-rule: var(--rule);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-highlight: var(--highlight);
+  --color-highlight-soft: var(--highlight-soft);
+
+  /* Attendance statuses: pastel pill + strong text */
+  --color-present: var(--present);
+  --color-present-bg: var(--present-bg);
+  --color-late: var(--late);
+  --color-late-bg: var(--late-bg);
+  --color-absent: var(--absent);
+  --color-absent-bg: var(--absent-bg);
+  --color-leave: var(--leave);
+  --color-leave-bg: var(--leave-bg);
+  --color-holiday: var(--holiday);
+  --color-holiday-bg: var(--holiday-bg);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: #f5f5f7;          /* canvas */
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-foreground: #18181b;
+  --popover: #ffffff;
+  --popover-foreground: #18181b;
+  --primary: #3d3af2;             /* vivid blue */
+  --primary-foreground: #ffffff;
+  --primary-soft: #ecebfe;
+  --secondary: #f4f4f6;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f6;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f6;
+  --accent-foreground: #18181b;
+  --destructive: #e11d48;
+  --destructive-foreground: #ffffff;
+  --border: #ececf0;
+  --rule: #e2e2e8;
+  --input: #e4e4e9;
+  --ring: #3d3af2;
+  --highlight: #ec4899;           /* pink: today, edited marks */
+  --highlight-soft: #fce7f3;
+
+  --present: #15803d;
+  --present-bg: #bbf7d0;
+  --late: #c2410c;
+  --late-bg: #fed7aa;
+  --absent: #be185d;
+  --absent-bg: #fbcfe8;
+  --leave: #3730a3;
+  --leave-bg: #c7d2fe;
+  --holiday: #71717a;
+  --holiday-bg: #f1f1f4;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/40;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "tnum";
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 18%, transparent);
+  }
+}
+
+@layer utilities {
+  /* Small muted label above values and sections */
+  .eyebrow {
+    @apply text-xs font-medium text-muted-foreground;
+  }
+  /* Soft tint for weekend / holiday columns */
+  .hatch {
+    background-color: #fafafb;
+  }
+}
