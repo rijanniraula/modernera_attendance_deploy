@@ -9,8 +9,8 @@ import {
   format,
 } from "date-fns";
 
-export const API_URL =
-  import.meta.env.API_URL || "http://localhost:3000/api/";
+export const API_URL ="https://preflagellated-forethoughtfully-tonya.ngrok-free.dev?utm_source=chatgpt.com/api/";
+
 
 export const TOKEN_KEY = "attendance_token";
 
